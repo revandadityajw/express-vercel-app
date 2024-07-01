@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
     let akhir = yt
     async function convert() {
     Object.entries(awal.video).forEach(async v => {
-       akhir.video[v[0]].download = await v[1].download()
+       akhir.video[v[0]].downloads = await v[1].download()
     })
       return true
     }
