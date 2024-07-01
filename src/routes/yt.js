@@ -6,10 +6,10 @@ const { youtubedl } = require('@bochilteam/scraper-sosmed');
  *
  * @return product list | empty.
  */
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    if (!req.query.q) return res.json({"status": "masukan parameter q"})
-    let yt = await youtubedl(req.query.q)
+    if (!req.body.url) return res.json({"status": "masukan parameter q"})
+    let yt = await youtubedl(req.body.url)
     let awal = yt
     let akhir = yt
     Object.entries(awal.video).forEach(v => {
