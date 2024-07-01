@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
     let yt = await youtubedl(req.body.url)
     let awal = yt
     let akhir = yt
-    Object.entries(awal.video).forEach(v => {
+    Object.entries(awal.video).forEach(async v => {
        akhir.video[v[0]].download = await v[1].download()
     })
     res.json(akhir);
