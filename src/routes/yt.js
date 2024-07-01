@@ -12,9 +12,13 @@ router.post("/", async (req, res) => {
     let yt = await youtubedl(req.body.url)
     let awal = yt
     let akhir = yt
+    async function convert() {
     Object.entries(awal.video).forEach(async v => {
        akhir.video[v[0]].download = await v[1].download()
-    }).then(() => {
+    })
+      return true
+    }
+      convert().then(() => {
     res.json(akhir);
     })
   } catch (error) {
