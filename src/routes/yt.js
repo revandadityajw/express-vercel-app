@@ -14,8 +14,9 @@ router.post("/", async (req, res) => {
     let akhir = yt
     Object.entries(awal.video).forEach(async v => {
        akhir.video[v[0]].download = await v[1].download()
-    })
+    }).then(() => {
     res.json(akhir);
+    })
   } catch (error) {
     console.error(error);
     return res.status(500).send("Server error");
